@@ -1,21 +1,21 @@
 #include <iostream>
+#include <cstdint>
 #include <vector>
-#include <chrono>
 
 using std::cout;
 using std::endl;
-typedef std::vector<int> intVector;
+typedef std::vector<uint64_t> intVector;
 typedef std::vector<bool> boolVector;
 
-intVector Primes(int upto) {
+intVector Primes(uint64_t upto) {
     intVector primes;
     boolVector primeMap(upto + 1, true);
     primeMap[0] = false;
     primeMap[1] = false;
-    for (int i = 2; i <= upto; i++) {
+    for (uint64_t i = 2; i <= upto; i++) {
         if (primeMap[i]) {
             primes.push_back(i);
-            for (int j = i * 2; j <= upto; j += i) {
+            for (uint64_t j = i * i; j <= upto; j += i) {
                 primeMap[j] = false;
             }
         }
